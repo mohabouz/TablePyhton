@@ -1,2 +1,15 @@
 # Generated teacher pair outputs
+# Ignore Python virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore generated teacher pair outputs
 teacher_pairs*.csv
