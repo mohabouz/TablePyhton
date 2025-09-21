@@ -1,3 +1,11 @@
+## Installing Requirements
+
+To install all dependencies at once, use:
+
+```bash
+pip install -r requirements.txt
+```
+
 # Teacher Pairing (Balanced Matching)
 
 A small tool to pair teachers with complementary schedules from a timetable CSV using a balanced (minimax) matching objective. Supports forbidding specific pairs and forcing pairs, and adapts automatically to timetables with 4 or 5 slots per period (8 or 10 slots/day).
