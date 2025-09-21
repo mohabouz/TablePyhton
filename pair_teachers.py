@@ -39,10 +39,29 @@ def write_pairs_csv(out_path: Path, teachers: List[Teacher], pairs: List[Tuple[i
             w.writerow([])
             w.writerow(["Unpaired", teachers[leftover].name, teachers[leftover].hours])
 
-def main(argv: List[str]) -> int:
-    if len(argv) < 2:
-        print("Usage: pair_teachers.py <TimeTable.csv> [--out pairs.csv]", file=sys.stderr)
-        return 2
+def print_usage():
+    print("""
+Usage: python pair_teachers.py <timetable.csv> [options]
+
+Options:
+  --out <file>           Output CSV path (default: teacher_pairs.csv)
+  --forbid-pair A B      Forbid a single pair inline (repeatable)
+  --forbid-file <file>   Forbid pairs via CSV file
+  --force-pair A B       Force a single pair inline (repeatable)
+  --force-file <file>    Force pairs via CSV file
+  -h, --help             Show this help message and exit
+
+Notes:
+  - If the same pair is both forced and forbidden, the force wins.
+  - One teacher cannot be in more than one forced pair.
+  - Timetable CSV must have a header with the first column as 'الاسم' or 'Name'.
+  - The tool auto-detects 4 or 5 slots per period (48 or 60 total slots).
+""")
+
+def main(argv):
+    if len(argv) < 2 or argv[1] in ("--help", "-h"):
+        print_usage()
+        return 0 if len(argv) > 1 else 2
 
     in_csv = Path(argv[1])
     out_csv: Optional[Path] = None
@@ -146,7 +165,6 @@ def main(argv: List[str]) -> int:
 
 
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main(sys.argv))
