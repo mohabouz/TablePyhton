@@ -62,22 +62,16 @@ Teacher X,Teacher Y
 
 You can use a Python virtual environment (recommended for isolation), or install dependencies globally/system-wide.
 
+
 ### Option 1: With venv (recommended)
 Create and activate a venv (Git Bash):
 ```bash
 python -m venv .venv
 source .venv/Scripts/activate
 ```
-Install dependencies:
-```bash
-pip install networkx
-```
 
 ### Option 2: System Python (no venv)
-Just install dependencies globally (may require admin):
-```bash
-pip install networkx
-```
+You can use your system Python directly (may require admin for global installs).
 
 ---
 
